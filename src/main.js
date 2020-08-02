@@ -336,7 +336,7 @@ const createStatsChartTemplate = () => {
   );
 };
 
-const render = (container, template, place) => {
+const render = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template);
 };
 
@@ -344,36 +344,36 @@ const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = document.querySelector(`.header`);
 const siteFooterElement = document.querySelector(`.footer`);
 
-render(siteHeaderElement, createProfileTemplate(), `beforeend`);
-render(siteMainElement, createMenuTemplate(), `beforeend`);
-render(siteMainElement, createSortTemplate(), `beforeend`);
-render(siteMainElement, createMainContentTemplete(), `beforeend`);
+render(siteHeaderElement, createProfileTemplate());
+render(siteMainElement, createMenuTemplate());
+render(siteMainElement, createSortTemplate());
+render(siteMainElement, createMainContentTemplete());
 
 const filmsElement = siteMainElement.querySelector(`.films`);
-render(filmsElement, createFilmListTemplate(), `beforeend`);
+render(filmsElement, createFilmListTemplate());
 
 const filmsListContainerElement = filmsElement.querySelector(`.films-list__container`);
 for (let i = 0; i < FILM_MAIN_NUM; i++) {
-  render(filmsListContainerElement, createFilmCardTemplate(), `beforeend`);
+  render(filmsListContainerElement, createFilmCardTemplate());
 }
 
 const filmsListElement = filmsElement.querySelector(`.films-list`);
-render(filmsListElement, createLoadMoreButtonTemplate(), `beforeend`);
+render(filmsListElement, createLoadMoreButtonTemplate());
 
-render(filmsElement, createTopRatedSectionTeplate(), `beforeend`);
-render(filmsElement, createTopCommentedSectionTemplate(), `beforeend`);
+render(filmsElement, createTopRatedSectionTeplate());
+render(filmsElement, createTopCommentedSectionTemplate());
 
 const filmsListExtraElement = filmsElement.querySelectorAll(`.films-list--extra`);
 
 filmsListExtraElement.forEach((entry) => {
   const filmsListExtraContainerElement = entry.querySelector(`.films-list__container`);
   for (let i = 0; i < TOP_NUM; i++) {
-    render(filmsListExtraContainerElement, createFilmCardTemplate(), `beforeend`);
+    render(filmsListExtraContainerElement, createFilmCardTemplate());
   }
 });
 
 const footerStatsElement = siteFooterElement.querySelector(`.footer__statistics`);
-render(footerStatsElement, createFilmsNumTemplate(), `beforeend`);
+render(footerStatsElement, createFilmsNumTemplate());
 
 // Начало отрисовки Popup
 render(siteFooterElement, createFilmDetailsPopupTemplate(), `afterend`);
@@ -382,29 +382,29 @@ const filmDetailsElement = document.querySelector(`.film-details`); // Врем�
 filmDetailsElement.classList.add(`visually-hidden`); //
 
 const popupFilmDetailsForm = document.querySelector(`.film-details__inner`);
-render(popupFilmDetailsForm, createFilmDetailsTemplate(), `beforeend`);
+render(popupFilmDetailsForm, createFilmDetailsTemplate());
 
 const filmDetailsTopContainer = popupFilmDetailsForm.querySelector(`.form-details__top-container`);
-render(filmDetailsTopContainer, createFilmDetailsControlTemplate(), `beforeend`);
+render(filmDetailsTopContainer, createFilmDetailsControlTemplate());
 
-render(popupFilmDetailsForm, createFilmDetailsCommentsSectionTemplate(), `beforeend`);
+render(popupFilmDetailsForm, createFilmDetailsCommentsSectionTemplate());
 
 const filmDetailsCommentsListElement = popupFilmDetailsForm.querySelector(`.film-details__comments-list`);
 for (let i = 0; i < COMMENTS_NUM; i++) {
-  render(filmDetailsCommentsListElement, createFilmDetailsCommentTemplate(), `beforeend`);
+  render(filmDetailsCommentsListElement, createFilmDetailsCommentTemplate());
 }
 render(filmDetailsCommentsListElement, createFilmDetailsNewCommentTemplate(), `afterend`);
 // Конец отрисовки Popup
 
 // Начало отрисовка Статистики
-render(siteMainElement, createStatsTemplate(), `beforeend`);
+render(siteMainElement, createStatsTemplate());
 
 const statsElement = siteMainElement.querySelector(`.statistic`);
 
 statsElement.classList.add(`visually-hidden`); // Временное скрытие Статистики
 
-render(statsElement, createStatsRankTemplate(), `beforeend`);
-render(statsElement, createStatsFiltersTemplate(), `beforeend`);
-render(statsElement, createStatsTextTemplate(), `beforeend`);
-render(statsElement, createStatsChartTemplate(), `beforeend`);
+render(statsElement, createStatsRankTemplate());
+render(statsElement, createStatsFiltersTemplate());
+render(statsElement, createStatsTextTemplate());
+render(statsElement, createStatsChartTemplate());
 // Конец отрисовки Статистики
